@@ -49,12 +49,21 @@ function successCallback(stream) {
 
 
   //設定するパラメータ//
+  ///*
   const pilot_S = [
-    [[72,140,35],[68,162,116],[71,139,46]],
+    [[72,140,35],[68,162,116],[71,139,80]],
     [[74,178,80],[0,0,0],[89,187,82]],
-    [[81,147,50],[82,178,42],[75,125,46]],
+    [[81,147,50],[82,178,42],[88,125,80]],
   ];
-  let color_kyoyou = [20,20,20];
+  //*/
+  /*
+  const pilot_S = [
+    [[67,153,71],[98,226,197],[72,147,71]],
+    [[75,215,114],[0,0,0],[153,250,142]],
+    [[67,163,74],[89,223,105],[100,178,92]],
+  ];
+  */
+  let color_kyoyou = [15,15,15];
   let ave_area = 4;
   size_y = 30;
   size_x = 30;
@@ -138,15 +147,15 @@ function successCallback(stream) {
       //console.log(pilot_S[0][0][0]+color_kyoyou[0　]);
       //T_num_detectAnker = 3;
 
-      /*
+      ///*
       loop++;
       if(loop>30){
         detectedMarker_Flag = 0;
         detect_marker();
       }
-      */
+      //*/
 
-      cariblation_ave(canvas.height/2-size/2,canvas.width/2-size/2);
+      //cariblation_ave(canvas.height/2-size/2,canvas.width/2-size/2);
 
 
       //キャリブレーション
@@ -176,8 +185,8 @@ function successCallback(stream) {
               judge_marker(y,x);
             }
             if(detectedMarker_Flag){             //マーカが見つかったならjudge_signal()へ
-              //judge_signal(y,x);              //色で飛び先を決める！！//
-              judge_signal_time(y,x);           //時間で飛び先を決める！！//
+              judge_signal(y,x);              //色で飛び先を決める！！//
+              //judge_signal_time(y,x);           //時間で飛び先を決める！！//
               if(judgedSignal_Flag){
                 break;
               }
