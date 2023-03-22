@@ -144,7 +144,7 @@ function successCallback(stream) {
         detectedMarker_Flag = 0;
         detect_marker();
       }
-      
+   
 
       //cariblation_ave(canvas.height/2-size/2,canvas.width/2-size/2);
 
@@ -176,7 +176,8 @@ function successCallback(stream) {
               judge_marker(y,x);
             }
             if(detectedMarker_Flag){             //マーカが見つかったならjudge_signal()へ
-              judge_signal(y,x)
+              //judge_signal(y,x);              //色で飛び先を決める！！//
+              judge_signal_time(y,x);           //時間で飛び先を決める！！//
               if(judgedSignal_Flag){
                 break;
               }
@@ -286,36 +287,100 @@ function successCallback(stream) {
         average(anky,ankx,1,1);
         compare_for_judgeSignal(0,0);
         if(T_num_judgeSignal>2){
-          console.log("トートバック")
+          console.log("トートバック");
           //console.log(ave_position[0][0]);
           window.location.href = 'https://knart.theshop.jp/items/72658345';
-          judgedSignal_Flag = 1
+          judgedSignal_Flag = 1;
         }
         else{
           compare_for_judgeSignal(0,2);
           if(T_num_judgeSignal>2){
-            console.log("コップ")
+            console.log("コップ");
             window.location.href = 'https://knart.theshop.jp/items/72327960';
-            judgedSignal_Flag = 1
+            judgedSignal_Flag = 1;
           }
           else{
             compare_for_judgeSignal(2,2);
             if(T_num_judgeSignal>2){
-              console.log("Tシャツ")
+              console.log("Tシャツ");
               window.location.href = 'https://knart.theshop.jp/items/72327753';
-              judgedSignal_Flag = 1
+              judgedSignal_Flag = 1;
             }
             else{
               compare_for_judgeSignal(2,0);
               if(T_num_judgeSignal>2){
-                console.log("キャンバス")
+                console.log("キャンバス");
                 window.location.href = 'https://sites.google.com/view/kannonishio/artworks';
-                judgedSignal_Flag = 1
+                judgedSignal_Flag = 1;
+              }
+              else{
+                console.log("信号に該当しない");
+              }
+            }
+          }
+        }
+        //検出終了
+      }
+
+
+      //信号の判定　（時間で飛び先決める）
+      function judge_signal_time(anky,ankx) {
+        average(anky,ankx,1,1);
+        compare_for_judgeSignal(0,0);
+        if(T_num_judgeSignal>2){
+          //console.log("トートバック");
+          //console.log(ave_position[0][0]);
+          //window.location.href = 'https://knart.theshop.jp/items/72658345';
+          judgedSignal_Flag = 1;
+        }
+        else{
+          compare_for_judgeSignal(0,2);
+          if(T_num_judgeSignal>2){
+            //console.log("コップ");
+            //window.location.href = 'https://knart.theshop.jp/items/72327960';
+            judgedSignal_Flag = 1;
+          }
+          else{
+            compare_for_judgeSignal(2,2);
+            if(T_num_judgeSignal>2){
+              //console.log("Tシャツ");
+              //window.location.href = 'https://knart.theshop.jp/items/72327753';
+              judgedSignal_Flag = 1;
+            }
+            else{
+              compare_for_judgeSignal(2,0);
+              if(T_num_judgeSignal>2){
+                //console.log("キャンバス");
+                //window.location.href = 'https://sites.google.com/view/kannonishio/artworks';
+                judgedSignal_Flag = 1;
               }
               else{
                 console.log("信号に該当しない")
               }
             }
+          }
+        }
+        if(judgedSignal_Flag){
+          keika_time = (Date.now() - strtTime) / 1000;
+          if((44 < keika_time && keika_time < 77) || (172 < keika_time && keika_time < 204)){
+            console.log("トートバック");
+            window.location.href = 'https://knart.theshop.jp/items/72658345';
+          }
+          else if((77 < keika_time && keika_time < 104) || (204 < keika_time && keika_time < 214)){
+            console.log("コップ");
+            window.location.href = 'https://knart.theshop.jp/items/72327960';
+          }
+          else if((104 < keika_time && keika_time < 132) ){
+            console.log("Tシャツ");
+            window.location.href = 'https://knart.theshop.jp/items/72327753';
+          }
+          else if((4 < keika_time && keika_time < 44) || (132 < keika_time && keika_time < 172)){
+            console.log("キャンバス");
+            window.location.href = 'https://sites.google.com/view/kannonishio/artworks';
+          }
+          else{
+            console.log("飛び先がわからない");
+            judgedSignal_Flag = 0;
           }
         }
         //検出終了
@@ -377,7 +442,5 @@ function successCallback(stream) {
 function errorCallback(err) {
   alert(err);
 };
-
-
 
 
