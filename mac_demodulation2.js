@@ -138,15 +138,15 @@ function successCallback(stream) {
       //console.log(pilot_S[0][0][0]+color_kyoyou[0　]);
       //T_num_detectAnker = 3;
 
-      
+      /*
       loop++;
       if(loop>30){
         detectedMarker_Flag = 0;
         detect_marker();
       }
-   
+      */
 
-      //cariblation_ave(canvas.height/2-size/2,canvas.width/2-size/2);
+      cariblation_ave(canvas.height/2-size/2,canvas.width/2-size/2);
 
 
       //キャリブレーション
