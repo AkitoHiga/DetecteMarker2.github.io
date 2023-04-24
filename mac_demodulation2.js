@@ -64,8 +64,7 @@ function successCallback(stream) {
   ];
   */
   let color_kyoyou = [15,15,15];
-  //let ave_area = 4;
-  let ave_area = 5;
+  let ave_area = 4;
   size_y = 30;
   size_x = 30;
 
@@ -167,7 +166,7 @@ function successCallback(stream) {
             for(let y=0; y<ave_area; y++){
               for(let x=0; x<ave_area; x++){
                 //ave_temp = add(ave_temp,videoMatNow.ucharPtr(anky+parseInt(size_y/6)*(py*2+1)-parseInt(ave_area/2), ankx+parseInt(size_x/6)*(px*2+1)-parseInt(ave_area/2)));
-                ave_temp = add(ave_temp,videoMatNow.ucharPtr(anky+parseInt(size_y/3)*(py)-parseInt(ave_area/2)+y, ankx+parseInt(size_x/3)*(px)-parseInt(ave_area/2)+x));
+                ave_temp = add(ave_temp,videoMatNow.ucharPtr(anky+parseInt(size_y/3)*(py)+y, ankx+parseInt(size_x/3)*(px)+x));
               }
             }
             ave_position[py][px] = div(ave_temp,ave_area*ave_area);
