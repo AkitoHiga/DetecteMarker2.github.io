@@ -64,7 +64,8 @@ function successCallback(stream) {
   ];
   */
   let color_kyoyou = [15,15,15];
-  let ave_area = 4;
+  //let ave_area = 4;
+  let ave_area = 10;
   size_y = 30;
   size_x = 30;
 
