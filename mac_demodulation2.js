@@ -166,7 +166,7 @@ function successCallback(stream) {
           for(let px=0; px<ave_position[0].length; px++){
             for(let y=0; y<ave_area; y++){
               for(let x=0; x<ave_area; x++){
-                ave_temp = add(ave_temp,videoMatNow.ucharPtr(anky+parseInt(size_y/6)*(py*2+1)-parseInt(ave_area/2)+y, ankx+parseInt(size_x/6)*(px*2+1)-parseInt(ave_area/2))+x);
+                ave_temp = add(ave_temp,videoMatNow.ucharPtr(anky+parseInt(size_y/6)*(py*2+1)-parseInt(ave_area/2)+y, ankx+parseInt(size_x/6)*(px*2+1)-parseInt(ave_area/2)+x));
                 //ave_temp = add(ave_temp,videoMatNow.ucharPtr(anky+parseInt(size_y/3)*(py)+y, ankx+parseInt(size_x/3)*(px)+x));
               }
             }
