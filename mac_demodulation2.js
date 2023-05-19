@@ -170,7 +170,7 @@ function successCallback(stream) {
                 //ave_temp = add(ave_temp,videoMatNow.ucharPtr(anky+parseInt(size_y/3)*(py)+y, ankx+parseInt(size_x/3)*(px)+x));
               }
             }
-            ave_position[py][px] = parseInt(div(ave_temp,ave_area*ave_area));
+            ave_position[py][px] = div(ave_temp,ave_area*ave_area);
             ave_temp = [0,0,0];
           }
         }
@@ -235,7 +235,7 @@ function successCallback(stream) {
       function div(a,b) {
         let result = [0,0,0];
         for(let i=0; i<3; i++){
-          result[i] = a[i]/b;
+          result[i] = parseInt(a[i]/b);
         }
         return result;
       }
